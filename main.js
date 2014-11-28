@@ -14,7 +14,7 @@ function clickEvent(){
 }
 
 function sendText(text,nm){
-  chatDataStore.push({uname : nm,message : text},function(data){
+  chatDataStore.push({uname : nm,content : text},function(data){
     console.log("送信完了!");
     textArea.value = "";
   });
@@ -26,6 +26,6 @@ chatDataStore.on("push",function(data){
 
 function addText(text){
   var msgDom = document.createElement("li");
-  msgDom.innerHTML = text.uname+":"+text.message;
+  msgDom.innerHTML = text.uname+":"+text.content;
   board.insertBefore(msgDom, board.firstChild);
 }
