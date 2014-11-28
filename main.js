@@ -14,7 +14,7 @@ function clickEvent(){
 }
 
 function sendText(text,nm){
-  chatDataStore.push({message : text,uname : nm},function(data){
+  chatDataStore.push({uname : nm,message : text},function(data){
     console.log("送信完了!");
     textArea.value = "";
   });
