@@ -18,7 +18,7 @@ function clickEvent(){
 }
 
 function sendText(text,nm){                       // ←これ
-var esc = text.replace(/&/g,"&amp;").replace(/\</g , "&gt;").replace(/\>/g,"&lt;").replace(/[\n\r]/g,"<br>").replace(/\s/g,"&nbsp;");
+var esc = text.replace(/&/g,"&amp;").replace(/\</g , "&lt;").replace(/\>/g,"&gt;").replace(/[\n\r]/g,"<br>").replace(/\s/g,"&nbsp;");
   chatDataStore.push({uname : nm,content : esc},function(data){  // ←これ
     console.log("送信完了!");
     textArea.value = "";
