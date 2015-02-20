@@ -18,7 +18,8 @@ function clickEvent(){
 }
 
 function sendText(text,nm){                       // ←これ
-  chatDataStore.push({uname : nm,content : text},function(data){  // ←これ
+var esc = text.replace(/&/g,"&amp;").replace(/\</g , "&gt;").replace(/\>/g,"&lt;").replace(/[\n\r]/g,"<br>").replace(/\s/g,"&nbsp;");
+  chatDataStore.push({uname : nm,content : esc},function(data){  // ←これ
     console.log("送信完了!");
     textArea.value = "";
   });
@@ -29,7 +30,7 @@ chatDataStore.on("push",function(data){
 });
 
 function addText(text){
-  var msgDom = document.createElement("li");
-  msgDom.innerHTML = text.uname+":"+text.content; // ←これ
+  var msgDom = document.createElement("p");
+  msgDom.innerHTML = "<b>"+text.uname+"</b><br />"+text.content;//.replace(/[\n\r]/g,"<br />"); // ←これ
   board.insertBefore(msgDom, board.firstChild);
 }
